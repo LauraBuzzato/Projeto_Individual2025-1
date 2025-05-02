@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Style/style.css">
 </head>
 
-<body>
+<body class="fundologin">
     <div class="header">
 
         <a href="paginaInicial.html" class="nomesite">
@@ -29,63 +29,22 @@
 
     </div>
 
+    <div class="main">
+        <div class="caixa">
+            <h2>Login</h2>
+            <div class="espaco">
+                <div class="form">
 
-    <div class="conteudo">
-
-
-        <div class="imagemTopo">
-            <img src="img/Foto inicial.png" alt="" width="100%">
-        </div>
-
-
-        <div class="beneficios">
-
-            <h2 class="titulo">Benefícios do Hábito de Leitura</h2>
-            <div class="traco1"></div>
-            <div class="traco2"></div>
-            <div class="linha1">
-                <div class="concentracao">
-                    <h3>Estimula a concentração</h3>
-                    <img src="img/concentracao.png" alt="">
-                </div>
-                <div class="cerebro">
-                    <h3>Melhora o funcionamento do cérebro</h3>
-                    <img src="img/cerebro.png" alt="">
-                </div>
-            </div>
-
-            <div class="linha2">
-                <div class="criatividade">
-                    <h3>Estimula a criatividade</h3>
-                    <img src="img/criatividade.png" alt="">
-                </div>
-                <div class="aprendizado">
-                    <h3>Melhora o aprendizado</h3>
-                    <img src="img/aprendizado.png" alt="">
-                </div>
-                <div class="sensocritico">
-                    <h3>Estimula o senso crítico</h3>
-                    <img src="img/senso critico.png" alt="">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="KPIinicialfundo">
-            <div class="KPIinicial">
-                <div class="coluna1">
-                    <h3>Queridinho dos nossos leitores:</h3>
-                    <img src="img/capa livro.png" alt="" class="capalivro">
-                </div>
-                <div class="coluna2">
-                    <div class="quadrado1">
-                        <h3>Quantas pessoas já leram ele:</h3>
-                        <h3 class="numero">X</h3>
+                    <div class="campo">
+                        <label for="ipt_email">E-mail:</label>
+                        <input type="email" id="ipt_email" required>
                     </div>
-                    <div class="quadrado2">
-                        <h3>Quantas avaliações maiores que 4 estrelas ele possui:</h3>
-                        <h3 class="numero">X</h3>
+                    <div class="campo">
+                        <label for="ipt_senha">Senha:</label>
+                        <input type="password" id="ipt_senha" required>
                     </div>
+
+                    <button onclick="mudar()">Entrar</button>
                 </div>
             </div>
         </div>
@@ -149,5 +108,11 @@
     </div>
 
 </body>
+
+<script>
+    function mudar(){
+        window.location.href = "calculadora.html"
+    }
+</script>
 
 </html>
