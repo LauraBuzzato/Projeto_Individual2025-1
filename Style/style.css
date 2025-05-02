@@ -2,13 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.header{
+body,
+html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
     background-color: #D4DDB1;
     flex-direction: row;
     display: flex;
@@ -18,12 +25,14 @@
     flex-wrap: wrap;
 }
 
-.teste{
+.header .nomesite {
     display: flex;
     flex-direction: row;
+    text-decoration: none;
+    color: white;
 }
 
-.header .titulo{
+.header .titulo {
     font-family: "Irish Grover", system-ui;
     font-weight: 100;
     align-self: center;
@@ -31,14 +40,15 @@
 }
 
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     gap: 2rem;
     flex-wrap: wrap;
     list-style: none;
-    
+
 }
+
 .navbar a {
     text-decoration: none;
     color: white;
@@ -62,15 +72,15 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.caixaCadastro{
+.caixaCadastro {
     background-color: #CDB28A;
 }
 
-.caixaLogin{
+.caixaLogin {
     background-color: #7A6448;
 }
 
-.beneficios .titulo{
+.beneficios .titulo {
     font-family: "Irish Grover", system-ui;
     font-weight: 100;
     font-size: 2.5rem;
@@ -80,7 +90,7 @@
     letter-spacing: 0.15rem;
 }
 
-.beneficios .traco1{
+.beneficios .traco1 {
     background-color: #D4DDB1;
     display: flex;
     justify-self: center;
@@ -90,7 +100,7 @@
     margin: 0 auto;
 }
 
-.beneficios .traco2{
+.beneficios .traco2 {
     background-color: #D4DDB1;
     display: flex;
     justify-self: center;
@@ -100,7 +110,7 @@
     margin: 0.6% auto 0 auto;
 }
 
-.beneficios .linha1{
+.beneficios .linha1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,7 +119,8 @@
     gap: 15%;
 }
 
-.beneficios .concentracao, .beneficios .cerebro{
+.beneficios .concentracao,
+.beneficios .cerebro {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -134,7 +145,7 @@
     margin-top: -50px;
 }
 
-.beneficios .linha2{
+.beneficios .linha2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +154,9 @@
     gap: 11%;
 }
 
-.beneficios .criatividade, .beneficios .sensocritico, .beneficios .aprendizado{
+.beneficios .criatividade,
+.beneficios .sensocritico,
+.beneficios .aprendizado {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -163,7 +176,8 @@
 }
 
 .beneficios .criatividade img,
-.beneficios .sensocritico img, .beneficios .aprendizado img{
+.beneficios .sensocritico img,
+.beneficios .aprendizado img {
     height: 250px;
     margin-top: -50px;
 }
@@ -178,16 +192,16 @@
     border-top: solid white 3px;
 }
 
-.KPIinicial{
+.KPIinicial {
     margin-top: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
 }
 
-.KPIinicial .coluna1{
+.KPIinicial .coluna1 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -206,12 +220,13 @@
 
 }
 
-.KPIinicialfundo .capalivro{
+.KPIinicialfundo .capalivro {
     margin-top: 15%;
     width: 60%;
 }
 
-.KPIinicialfundo .coluna2 .quadrado1, .KPIinicialfundo .coluna2 .quadrado2{
+.KPIinicialfundo .coluna2 .quadrado1,
+.KPIinicialfundo .coluna2 .quadrado2 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -229,15 +244,15 @@
     gap: 10%;
 }
 
-.KPIinicialfundo .coluna2 .quadrado1{
+.KPIinicialfundo .coluna2 .quadrado1 {
     margin-bottom: 15%;
 }
 
-.KPIinicialfundo .coluna2 .numero{
+.KPIinicialfundo .coluna2 .numero {
     font-size: 5rem;
 }
 
-.footer{
+.footer {
     width: 100%;
     height: fit-content;
     background-color: #7A6448;
@@ -248,13 +263,13 @@
     font-weight: 100;
 }
 
-.footer .nomesite{
+.footer .nomesite {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.footer .links{
+.footer .links {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -263,12 +278,12 @@
     margin-top: -1.5%;
 }
 
-.footer .links a{
+.footer .links a {
     color: white;
     font-family: "Itim", cursive;
 }
 
-.footer .linhadivisoria{
+.footer .linhadivisoria {
     background-color: white;
     display: flex;
     justify-self: center;
@@ -279,7 +294,11 @@
     margin-top: 0.5%;
 }
 
-.footer .sobre a{
+.footer .sobre {
+    list-style: none;
+}
+
+.footer .sobre a {
     color: white;
     display: flex;
     justify-content: center;
@@ -287,10 +306,148 @@
     margin-top: 1%;
 }
 
-.footer .redessociais{
+.footer .redessociais {
     display: flex;
     justify-content: center;
     gap: 0.5%;
     margin-top: 1.5%;
     margin-bottom: 1%;
 }
+
+.fundosobre {
+    background: linear-gradient(to top, #F9F4E3 0%, #F9F4E3 30%, #ffffff 100%);
+    font-family: "Itim", cursive;
+}
+
+.fundosobre .linha1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15%;
+    align-items: center;
+    font-size: 3rem;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.fundosobre .pilhalivros {
+    border-radius: 50px;
+    height: 30rem;
+}
+
+.fundosobre .linha2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+    font-size: 3rem;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.fundosobre .avaliacoes {
+    border-radius: 50px;
+    height: 30rem;
+    margin: 3.5%;
+}
+
+.fundosobre .calculadora {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-top: 10%;
+    text-align: center;
+    width: 100%;
+}
+
+.fundosobre .textocalculadora {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+    font-size: 3rem;
+    margin-top: -44%;
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.fundosobre .espaco {
+    width: 100%;
+    height: 55rem;
+}
+
+.fundocadastro {
+    background-color: #f6f1de;
+    min-height: 100vh;
+}
+
+.fundocadastro .caixa {
+    border: 2px solid #CDB28A;
+    border-radius: 20px;
+    padding: 40px;
+    width: 450px;
+    text-align: center;
+    width: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #CDB28A;
+    font-family: "Itim", cursive;
+
+}
+
+.fundocadastro .caixa h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form label {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+.form input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    outline: none;
+}
+
+.form button {
+    background-color: #CDB28A;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+    font-family: "Itim", cursive;
+}
+
+.form .campo {
+    display: flex;
+    flex-direction: column;
+}
+
