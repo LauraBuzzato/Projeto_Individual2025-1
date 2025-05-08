@@ -7,12 +7,10 @@
     <title>Estante de Sonhos</title>
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="fundobiblioteca">
+<body class="fundostatus">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -23,30 +21,34 @@
 
         <ul class="navbar">
             <li>
-                <a href="status.html" class="">Status</a>
+                <a href="status.html" class=""><u>Status</u></a>
             </li>
             <li>
                 <a href="calculadora.html" class="">Calculadora</a>
             </li>
             <li>
-                <a href="biblioteca.html" class=""><u>Biblioteca</u></a>
+                <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
             <li>
                 <a href="paginaInicial.html" class="">Sair</a>
             </li>
         </ul>
     </div>
-
-    <div class="inicio">
-        <div class="topo">
-            <h2>Seus livros</h2>
-            <div class="areacadastro">
-                <select name="" id="listalidos" class="listalidos">
-                    <option value="0">selecione o livro</option>
-                    <option value="">teste</option>
-                </select>
-                <button>Marcar como lido</button>
+    <div class="corpo">
+        <div class="graficos-kpis">
+            <div class="containergraficorosquinha">
+                <h3>Gêneros mais lidos por você</h3>
+                <canvas id="myChart"></canvas>
             </div>
+            <div class="qtdlivros">
+                <h3>Quantidade de livros lidos:</h3>
+                <h2>X</h2>
+            </div>
+
+        </div>
+        <div class="titulo">
+            <h2>Suas avaliações</h2>
+            <div class="containeravaliacoes"></div>
         </div>
     </div>
 
@@ -106,12 +108,38 @@
             </a>
         </div>
     </div>
+
 </body>
 
 <script>
-    $(document).ready(function() {
-    $('#listalidos').select2();
-});
+
+    const data = {
+        labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    )
 </script>
 
 </html>

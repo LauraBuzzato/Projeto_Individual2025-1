@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
-<body class="fundobiblioteca">
+<body class="fundoavaliacoes">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -29,7 +29,7 @@
                 <a href="calculadora.html" class="">Calculadora</a>
             </li>
             <li>
-                <a href="biblioteca.html" class=""><u>Biblioteca</u></a>
+                <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
             <li>
                 <a href="paginaInicial.html" class="">Sair</a>
@@ -37,15 +37,28 @@
         </ul>
     </div>
 
-    <div class="inicio">
-        <div class="topo">
-            <h2>Seus livros</h2>
-            <div class="areacadastro">
-                <select name="" id="listalidos" class="listalidos">
-                    <option value="0">selecione o livro</option>
-                    <option value="">teste</option>
-                </select>
-                <button>Marcar como lido</button>
+    <div class="main">
+        <div class="caixa">
+            <h2>Calcule seu tempo de leitura</h2>
+            <div class="espaco">
+                <div class="form">
+
+                    <div class="campo">
+                        <label for="ipt_senha">Livro a ser avaliado:</label>
+                        <select name="" id="nomelivro" class="nomelivro">
+                            <option value="0">selecione o livro</option>
+                            <option value="">teste</option>
+                        </select>
+                        <a href="cadastrolivro.html">O livro não está na lista? Clique aqui!</a>
+                    </div>
+                    <div class="campo">
+                        <label for="ipt_email">Escreva sua avaliação aqui:</label>
+                        <div class="tempo">
+                            <input type="email" id="ipt_email" required>
+                        </div>
+                    </div>
+                        <button class="avaliar">Adicionar Avaliação</button>
+                </div>
             </div>
         </div>
     </div>
@@ -106,11 +119,12 @@
             </a>
         </div>
     </div>
+
 </body>
 
 <script>
     $(document).ready(function() {
-    $('#listalidos').select2();
+    $('#nomelivro').select2();
 });
 </script>
 

@@ -7,12 +7,9 @@
     <title>Estante de Sonhos</title>
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
-<body class="fundobiblioteca">
+<body class="possobre">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -29,26 +26,33 @@
                 <a href="calculadora.html" class="">Calculadora</a>
             </li>
             <li>
-                <a href="biblioteca.html" class=""><u>Biblioteca</u></a>
+                <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
             <li>
                 <a href="paginaInicial.html" class="">Sair</a>
             </li>
         </ul>
+
     </div>
 
-    <div class="inicio">
-        <div class="topo">
-            <h2>Seus livros</h2>
-            <div class="areacadastro">
-                <select name="" id="listalidos" class="listalidos">
-                    <option value="0">selecione o livro</option>
-                    <option value="">teste</option>
-                </select>
-                <button>Marcar como lido</button>
-            </div>
+
+    <div class="fundosobre">
+        <div class="linha1">
+            <h2>Organizar suas leituras</h2>
+            <img src="img/pilha livros.jpg" alt="" class="pilhalivros">
         </div>
+        <div class="linha2">
+            <h2>Central de avaliações clara e acessível.</h2>
+            <img src="img/avaliacoes.jpg" alt="" class="avaliacoes">
+        </div>
+        <div class="linha3">
+            <img src="img/calculadora.png" alt="" class="calculadora">
+            <h2 class="textocalculadora">Calculadora do tempo de leitura</h2>
+        </div>
+        <div class="espaco"></div>
     </div>
+
+
 
     <div class="footer">
         <div class="nomesite">
@@ -107,11 +111,5 @@
         </div>
     </div>
 </body>
-
-<script>
-    $(document).ready(function() {
-    $('#listalidos').select2();
-});
-</script>
 
 </html>

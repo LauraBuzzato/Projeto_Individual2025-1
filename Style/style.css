@@ -13,6 +13,7 @@ html {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .header {
@@ -543,7 +544,8 @@ html {
     justify-content: space-between;
 }
 
-.fundocalculadora .navbar a, .fundocadastrolivro .navbar a, .fundobiblioteca .navbar a, .poslogin .navbar a {
+.fundocalculadora .navbar a, .fundocadastrolivro .navbar a, .fundobiblioteca .navbar a, .poslogin .navbar a, .possobre .navbar a,
+.fundoavaliacoes .navbar a, .fundostatus .navbar a{
     font-size: 1.5rem;
 }
 
@@ -695,4 +697,118 @@ html {
     font-family: "Itim", cursive;
     font-size: 1.15rem;
     cursor: pointer;
+}
+
+.fundostatus{
+    background-color: #f6f1de;
+    
+}
+
+.containergraficorosquinha{
+    width: 70%;
+    text-align: center;
+    background-color: white;
+    border-radius: 50px;
+    padding: 2%;
+}
+
+.graficos-kpis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    min-height: 80%;
+    flex-direction: column;
+    font-family: "Itim", cursive;
+    font-size: 1.3rem;
+    gap: 7%;
+}
+
+.qtdlivros{
+    background-color: white;
+    border-radius: 50px;
+    padding: 8%;
+    text-align: center;
+}
+
+.qtdlivros h2{
+    font-size: 5rem;
+}
+
+.fundostatus .corpo{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 2%;
+    font-family: "Itim", cursive;
+    height: 100%;
+    margin-bottom: 2%;
+}
+
+.fundostatus .corpo .titulo{
+    font-size: 1.5rem;
+    width: 65%;
+}
+
+.fundoavaliacoes{
+    background-color: #f6f1de;
+}
+
+.fundoavaliacoes .caixa {
+    border: 2px solid #CDB28A;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    width: 50%;
+    height: 80%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #CDB28A;
+    font-family: "Itim", cursive;
+
+}
+
+.fundoavaliacoes .caixa h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.fundoavaliacoes .form button {
+    background-color: #CDB28A;
+}
+
+.fundoavaliacoes .tempo input {
+    width: 100%;
+    border-radius: 50px;
+    text-align: start;
+}
+
+.fundoavaliacoes .form .nomelivro {
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.fundoavaliacoes .form a {
+    color: #CDB28A;
+}
+
+.fundoavaliacoes .select2-container--default .select2-selection--single {
+    background-color: white !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 4px !important;
+    outline: none !important;
+    height: auto !important;
+}
+
+.fundoavaliacoes .select2-container {
+    width: 100% !important;
+}
+
+.fundoavaliacoes .select2-selection--single {
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
