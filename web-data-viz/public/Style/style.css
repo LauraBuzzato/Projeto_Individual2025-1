@@ -779,10 +779,16 @@ html {
     background-color: #CDB28A;
 }
 
-.fundoavaliacoes .tempo input {
+.fundoavaliacoes .tempo textarea {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 30px;
     text-align: start;
+    border: none;
+    outline: none;
+    height: 10rem;
+    resize: none;
+    padding: 1.5%;
+    font-family: "Itim", cursive;
 }
 
 .fundoavaliacoes .form .nomelivro {
