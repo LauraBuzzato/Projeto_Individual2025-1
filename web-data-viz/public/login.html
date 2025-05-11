@@ -7,12 +7,13 @@
     <title>Estante de Sonhos</title>
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
+    <script src="JS/sessao.js"></script>
 </head>
 
 <body class="fundologin">
     <div class="header">
 
-        <a href="paginaInicial.html" class="nomesite">
+        <a href="index.html" class="nomesite">
             <img src="img/Logo sem fundo.png" alt="" width="145rem" height="145rem">
             <h1 class="titulo">Estante de Sonhos</h1>
         </a>
@@ -44,7 +45,7 @@
                         <input type="password" id="ipt_senha" required>
                     </div>
 
-                    <button onclick="mudar()">Entrar</button>
+                    <button onclick="entrar()">Entrar</button>
                 </div>
             </div>
         </div>
@@ -110,9 +111,66 @@
 </body>
 
 <script>
-    function mudar(){
-        window.location.href = "calculadora.html"
+    function entrar() {
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert("Todos os campos devem ser preenchidos!");
+            return false;
+        }
+        
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./biblioteca.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
+
+    
 </script>
 
 </html>

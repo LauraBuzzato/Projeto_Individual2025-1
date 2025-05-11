@@ -21,3 +21,4 @@ avaliacao varchar(200),
 primary key (fkusuario, fklivro),
 constraint fkusuario foreign key (fkusuario) references usuario(id),
 constraint fklivro foreign key (fklivro) references livro(id));
+select * from usuario;

@@ -8,8 +8,11 @@
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="JS/calculadora.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="fundocalculadora">
@@ -38,47 +41,50 @@
     </div>
     <div class="main">
         <div class="caixa">
-            <h2>Calcule seu tempo de leitura</h2>
+            <h2>Calcule a quantidade de páginas por dia até o fim do livro</h2>
             <div class="espaco">
                 <div class="form">
 
                     <div class="campo">
-                        <label for="ipt_senha">Qual livro pretende ler?</label>
-                        <select name="" id="nomelivro" class="nomelivro">
-                            <option value="0">selecione o livro</option>
-                            <option value="">teste</option>
+                        <label for="ipt_livro">Qual livro pretende ler?</label>
+                        <select name="" id="ipt_livro" class="nomelivro">
+                            <option value="">selecione o livro</option>
+                            <option value="livro1">O Pequeno Príncipe</option>
                         </select>
                         <a href="cadastrolivro.html">O livro não está na lista? Clique aqui!</a>
                     </div>
                     <div class="campo">
-                        <label for="ipt_email">Quanto tempo livre você tem por dia?</label>
+                        <label for="ipt_tempo">Quanto tempo livre você tem por dia?</label>
                         <div class="tempo">
-                            <input type="email" id="ipt_email" required>
-                            <select name="" id="" required>
-                                <option value="0">selecione medida</option>
+                            <input type="number" id="ipt_tempo" required>
+                            <select name="" id="ipt_tipotempo" required>
+                                <option value="">selecione medida</option>
                                 <option value="hora">horas</option>
                                 <option value="minuto">minutos</option>
                             </select>
                         </div>
                     </div>
                     <div class="campo">
-                        <label for="ipt_senha">Quais dias da semana você tem esse tempo?</label>
+                        <label for="ipt_diasemana">Quais dias da semana você tem esse tempo?</label>
                         <div class="checkbox">
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Segunda</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Terça</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Quarta</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Quinta</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Sexta</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Sábado</p>
-                            <p><input type="checkbox" id="ipt_senha" required><span class="checkmark"></span>Domingo</p>
+                            <p><input type="checkbox" name="diasemana" required value="segunda"><span class="checkmark"></span>Segunda</p>
+                            <p><input type="checkbox" name="diasemana" required value="terca"><span class="checkmark"></span>Terça</p>
+                            <p><input type="checkbox" name="diasemana" required value="quarta"><span class="checkmark"></span>Quarta</p>
+                            <p><input type="checkbox" name="diasemana" required value="quinta"><span class="checkmark"></span>Quinta</p>
+                            <p><input type="checkbox" name="diasemana" required value="sexta"><span class="checkmark"></span>Sexta</p>
+                            <p><input type="checkbox" name="diasemana" required value="sabado"><span class="checkmark"></span>Sábado</p>
+                            <p><input type="checkbox" name="diasemana" required value="domingo"><span class="checkmark"></span>Domingo</p>
                         </div>
                     </div>
                     <div class="botoes">
-                    <button class="calcular">Calcular</button>
-                    <button class="feedbacks">Ver avaliações</button>
+                        <button class="calcular" onclick="calcular()">Calcular</button>
+                        <button class="feedbacks">Ver avaliações</button>
+                    </div>
+                    <a href="avaliacoes.html">Adicionar avaliação</a>
                 </div>
-                <a href="avaliacoes.html">Adicionar avaliação</a>
-                </div>
+            </div>
+            <div class="hidden" id="teste">
+            <canvas id="meuGrafico" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -141,9 +147,39 @@
 </body>
 
 <script>
-    $(document).ready(function() {
-    $('#nomelivro').select2();
-});
+    $(document).ready(function () {
+        $('#ipt_livro').select2();
+    });
 </script>
+
+<script>
+  const ctx = document.getElementById('meuGrafico').getContext('2d');
+  const meuGrafico = new Chart(ctx, {
+    type: 'bar', 
+    data: {
+      labels: [], 
+      datasets: [{
+        label: 'Total de páginas por dia',
+        data: [], 
+        backgroundColor: [ 
+          'rgba(122, 100, 72, 0.5)'
+        ],
+        borderColor: [ 
+          'rgba(122, 100, 72, 1)'
+        ],
+        borderWidth: 1 
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true // começa o eixo y no zero
+        }
+      }
+    }
+  });
+</script>
+
+
 
 </html>

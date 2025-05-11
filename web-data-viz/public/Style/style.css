@@ -493,7 +493,7 @@ html {
     padding: 40px;
     text-align: center;
     width: 50%;
-    height: 80%;
+    height: 77%;
     padding-left: 5%;
     padding-right: 5%;
     color: #7A6448;
@@ -817,4 +817,12 @@ html {
 .fundoavaliacoes .select2-selection--single {
     width: 100% !important;
     box-sizing: border-box !important;
+}
+
+#meuGrafico{
+    margin-top: 4%;
+}
+
+.hidden{
+    display: none;
 }
