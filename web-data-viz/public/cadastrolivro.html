@@ -7,6 +7,7 @@
     <title>Estante de Sonhos</title>
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
+    <script src="JS/sessao.js"></script>
 </head>
 
 <body class="fundocadastrolivro">
@@ -29,7 +30,7 @@
                 <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
             <li>
-                <a href="paginaInicial.html" class="">Sair</a>
+                <a onclick="limparSessao()">Sair</a>
             </li>
         </ul>
     </div>
@@ -41,60 +42,57 @@
                 <div class="form">
 
                     <div class="campo">
-                        <label for="ipt_senha">Nome do livro:</label>
-                        <input type="text" id="ipt_senha">
+                        <label for="ipt_nome">Nome do livro:</label>
+                        <input type="text" id="ipt_nome">
                     </div>
                     <div class="campo">
-                        <label for="ipt_email">Quantidade de páginas:</label>
-                        <input type="number" id="ipt_email" required>
+                        <label for="ipt_qtdPagina">Quantidade de páginas:</label>
+                        <input type="number" id="ipt_qtdPagina" required>
                     </div>
                     <div class="campo">
                         <label for="ipt_senha">Gênero:</label>
                         <div class="radio">
                             <div class="linha1">
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Romance</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Comédia</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Fantasia</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Ficção científica</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Distopia</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Terror</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Suspense</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Biografia / Autobiografia</p>
+                                <p><input type="radio" id="genero_romance" name="genero" value="Romance" required>
+                                    Romance</p>
+                                <p><input type="radio" id="genero_comedia" name="genero" value="Comédia" required>
+                                    Comédia</p>
+                                <p><input type="radio" id="genero_fantasia" name="genero" value="Fantasia" required>
+                                    Fantasia</p>
+                                <p><input type="radio" id="genero_scifi" name="genero" value="Ficção científica"
+                                        required> Ficção científica</p>
+                                <p><input type="radio" id="genero_distopia" name="genero" value="Distopia" required>
+                                    Distopia</p>
+                                <p><input type="radio" id="genero_terror" name="genero" value="Terror" required> Terror
+                                </p>
+                                <p><input type="radio" id="genero_suspense" name="genero" value="Suspense" required>
+                                    Suspense</p>
+                                <p><input type="radio" id="genero_bio" name="genero" value="Biografia / Autobiografia"
+                                        required> Biografia / Autobiografia</p>
                             </div>
                             <div class="linha2">
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Histórico</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Clássico</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Poesia</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Crônica</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Conto</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Religioso / Espiritualidade</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Autoajuda</p>
-                                <p><input type="radio" id="ipt_senha" name="genero" required><span
-                                        class="checkmark"></span>Mangá / HQ / Graphic Novel</p>
+                                <p><input type="radio" id="genero_historico" name="genero" value="Histórico"> Histórico
+                                </p>
+                                <p><input type="radio" id="genero_classico" name="genero" value="Clássico"> Clássico</p>
+                                <p><input type="radio" id="genero_poesia" name="genero" value="Poesia"> Poesia</p>
+                                <p><input type="radio" id="genero_cronica" name="genero" value="Crônica"> Crônica</p>
+                                <p><input type="radio" id="genero_conto" name="genero" value="Conto"> Conto</p>
+                                <p><input type="radio" id="genero_religioso" name="genero"
+                                        value="Religioso / Espiritualidade"> Religioso / Espiritualidade</p>
+                                <p><input type="radio" id="genero_autoajuda" name="genero" value="Autoajuda"> Autoajuda
+                                </p>
+                                <p><input type="radio" id="genero_manga" name="genero"
+                                        value="Mangá / HQ / Graphic Novel"> Mangá / HQ / Graphic Novel</p>
+
                             </div>
                         </div>
                     </div>
                     <div class="campo">
-                        <label for="ipt_email">Insira o link da imagem da capa:</label>
-                        <input type="url" id="ipt_email" required>
+                        <label for="ipt_urlCapa">Insira o link da imagem da capa:</label>
+                        <input type="url" id="ipt_urlCapa" required>
                     </div>
 
-                    <button class="calcular">Cadastrar</button>
+                    <button class="calcular" onclick="cadastrar()">Cadastrar</button>
 
                 </div>
             </div>
@@ -158,5 +156,73 @@
         </div>
     </div>
 </body>
+
+<script>
+
+
+    function cadastrar() {
+        var nomeVar = ipt_nome.value;
+        var generoVar = (document.querySelector('input[name="genero"]:checked').value);
+        var qtdPaginaVar = ipt_qtdPagina.value;
+        var urlCapaVar = ipt_urlCapa.value;
+
+        
+
+        if (!generoVar) {
+            alert("Selecione um gênero!");
+            return;
+        }
+
+
+        if (
+            nomeVar == "" ||
+            generoVar == "" ||
+            qtdPaginaVar == "" ||
+            urlCapaVar == ""
+        ) {
+            alert("Todos os campos devem ser preenchidos!");
+            return false;
+        }
+
+        if (nomeVar.length <= 1) {
+            alert("Nome inválido!");
+            return;
+        }
+
+        fetch("/livros/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                generoServer: generoVar,
+                qtdPaginaServer: qtdPaginaVar,
+                urlCapaServer: urlCapaVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                    setTimeout(() => {
+                        window.location = "cadastrolivro.html";
+                    }, 1000);
+                } else {
+                    resposta.text().then(texto => {
+                        console.error("Erro no backend:", texto);
+                    });
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.error(`#ERRO: ${erro}`);
+            });
+
+        return false;
+    }
+
+</script>
 
 </html>

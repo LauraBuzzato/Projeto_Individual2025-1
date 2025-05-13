@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="JS/calculadora.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/sessao.js"></script>
 </head>
 
 <body class="fundocalculadora">
@@ -35,7 +36,7 @@
                 <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
             <li>
-                <a href="paginaInicial.html" class="">Sair</a>
+                <a onclick="limparSessao()">Sair</a>
             </li>
         </ul>
     </div>
@@ -49,7 +50,7 @@
                         <label for="ipt_livro">Qual livro pretende ler?</label>
                         <select name="" id="ipt_livro" class="nomelivro">
                             <option value="">selecione o livro</option>
-                            <option value="livro1">O Pequeno Príncipe</option>
+                            
                         </select>
                         <a href="cadastrolivro.html">O livro não está na lista? Clique aqui!</a>
                     </div>
@@ -83,8 +84,8 @@
                     <a href="avaliacoes.html">Adicionar avaliação</a>
                 </div>
             </div>
-            <div class="hidden" id="teste">
-            <canvas id="meuGrafico" width="400" height="200"></canvas>
+            <div class="grafico hidden" id="teste">
+            <canvas id="meuGrafico"></canvas>
             </div>
         </div>
     </div>

@@ -8,8 +8,10 @@
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="JS/sessao.js"></script>
 </head>
 
 <body class="fundobiblioteca">
@@ -32,7 +34,7 @@
                 <a href="biblioteca.html" class=""><u>Biblioteca</u></a>
             </li>
             <li>
-                <a href="paginaInicial.html" class="">Sair</a>
+                <a onclick="limparSessao()">Sair</a>
             </li>
         </ul>
     </div>
@@ -42,8 +44,7 @@
             <h2>Seus livros</h2>
             <div class="areacadastro">
                 <select name="" id="listalidos" class="listalidos">
-                    <option value="0">selecione o livro</option>
-                    <option value="">teste</option>
+                    <option value="">selecione o livro</option>
                 </select>
                 <button>Marcar como lido</button>
             </div>
@@ -109,9 +110,28 @@
 </body>
 
 <script>
-    $(document).ready(function() {
-    $('#listalidos').select2();
-});
+    $(document).ready(function () {
+        $('#listalidos').select2();
+    });
 </script>
+
+<script>
+    fetch("/livros/buscarLivros", {
+    method: "POST"
+})
+.then(res => res.json())
+.then(dados => {
+    console.log(dados);
+    dados.forEach(livro => {
+        const opt = new Option(livro.nome, livro.nome);
+        $('#listalidos').append(opt);
+    });
+    $('#listalidos').trigger('change.select2');
+})
+.catch(erro => console.error("Erro ao carregar livros:", erro));
+
+
+</script>
+
 
 </html>
