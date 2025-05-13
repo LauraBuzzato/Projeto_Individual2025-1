@@ -8,9 +8,12 @@
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="JS/sessao.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body class="fundoavaliacoes">
@@ -32,7 +35,7 @@
             <li>
                 <a href="biblioteca.html" class="">Biblioteca</a>
             </li>
-            <li>
+            <li class="sair">
                 <a onclick="limparSessao()">Sair</a>
             </li>
         </ul>
@@ -40,7 +43,7 @@
 
     <div class="main">
         <div class="caixa">
-            <h2>Calcule seu tempo de leitura</h2>
+            <h2>Adicione sua avaliação</h2>
             <div class="espaco">
                 <div class="form">
 
@@ -48,17 +51,27 @@
                         <label for="ipt_senha">Livro a ser avaliado:</label>
                         <select name="" id="nomelivro" class="nomelivro">
                             <option value="0">selecione o livro</option>
-                        
+
                         </select>
                         <a href="cadastrolivro.html">O livro não está na lista? Clique aqui!</a>
                     </div>
                     <div class="campo">
+                        <label for="estrela">Nota:</label>
+                        <div class="rating">
+                            <input type="radio" name="estrela" id="estrela1"><label for="estrela1"></label>
+                            <input type="radio" name="estrela" id="estrela2"><label for="estrela2"></label>
+                            <input type="radio" name="estrela" id="estrela3"><label for="estrela3"></label>
+                            <input type="radio" name="estrela" id="estrela4"><label for="estrela4"></label>
+                            <input type="radio" name="estrela" id="estrela5"><label for="estrela5"></label>
+                        </div>
+                    </div>
+                    <div class="campo espacamento">
                         <label for="ipt_email">Escreva sua avaliação aqui:</label>
                         <div class="tempo">
                             <textarea name="" id="ipt_email"></textarea>
                         </div>
                     </div>
-                        <button class="avaliar">Adicionar Avaliação</button>
+                    <button class="avaliar" onclick="adicionar()">Adicionar Avaliação</button>
                 </div>
             </div>
         </div>
@@ -124,25 +137,32 @@
 </body>
 
 <script>
-    $(document).ready(function() {
-    $('#nomelivro').select2();
-});
+    $(document).ready(function () {
+        $('#nomelivro').select2();
+    });
 </script>
 
 <script>
     fetch("/livros/buscarLivros", {
-    method: "POST"
-})
-.then(res => res.json())
-.then(dados => {
-    console.log(dados);
-    dados.forEach(livro => {
-        const opt = new Option(livro.nome, livro.nome);
-        $('#nomelivro').append(opt);
-    });
-    $('#nomelivro').trigger('change.select2');
-})
-.catch(erro => console.error("Erro ao carregar livros:", erro));
+        method: "POST"
+    })
+        .then(res => res.json())
+        .then(dados => {
+            console.log(dados);
+            dados.forEach(livro => {
+                const opt = new Option(livro.nome, livro.nome);
+                $('#nomelivro').append(opt);
+            });
+            $('#nomelivro').trigger('change.select2');
+        })
+        .catch(erro => console.error("Erro ao carregar livros:", erro));
+</script>
+
+<script>
+    function adicionar(){
+        var selecionados = document.querySelectorAll('input[name="estrela"]:checked')
+        console.log(selecionados)
+    }
 </script>
 
 </html>

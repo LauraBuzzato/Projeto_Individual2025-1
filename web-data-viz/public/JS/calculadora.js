@@ -15,12 +15,13 @@ fetch("/livros/buscarLivros", {
 .catch(erro => console.error("Erro ao carregar livros:", erro));
 
 function calcular(){
-    var livroSelecionado = ipt_livro.value;
-    var tempo = Number(ipt_tempo.value);
-    var tipotempo = ipt_tipotempo.value;
-
-    var listaDias = [];
-    var selecionados = document.querySelectorAll('input[name="diasemana"]:checked');
+    var livroSelecionado = ipt_livro.value
+    var tempo = Number(ipt_tempo.value)
+    var tipotempo = ipt_tipotempo.value
+    var selecionados = document.querySelectorAll('input[name="diasemana"]:checked')
+    
+    var listaDias = []
+    
     selecionados.forEach(function(dia) {
         listaDias.push(dia.value);
     });
@@ -38,7 +39,7 @@ function calcular(){
     var qtdDias = parseInt(totalPaginas / tempo);
 
     while ((listaDias.length - 1) != qtdDias) {
-        selecionados = document.querySelectorAll('input[name="diasemana"]:checked');
+        
         selecionados.forEach(function(dia) {
             listaDias.push(dia.value);
         });

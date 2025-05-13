@@ -17,8 +17,12 @@ urlCapa varchar(100));
 create table lido(
 fkusuario int not null,
 fklivro int not null,
+nota int,
 avaliacao varchar(200),
 primary key (fkusuario, fklivro),
 constraint fkusuario foreign key (fkusuario) references usuario(id),
 constraint fklivro foreign key (fklivro) references livro(id));
-select * from usuario;
+select nome, genero, qtdPagina, urlCapa from livro order by nome asc;
+select * from lido;
+
+
