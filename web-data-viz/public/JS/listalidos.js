@@ -21,7 +21,7 @@ function mostrarLido(){
           lidos = dados
 
           for(i=0; i<lidos.length; i++){
-        div_lidos.innerHTML += `nome: ${lidos[i].nome}`
+        div_lidos.innerHTML += `<div><img src="${lidos[i].urlCapa}" alt="" width="100px" height="150px"><br>${lidos[i].nome}<br>${lidos[i].genero}<br><button onclick="excluir()">Excluir</button></div>`
       }
            
         });
