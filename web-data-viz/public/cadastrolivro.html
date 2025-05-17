@@ -166,6 +166,7 @@
 
     function cadastrar() {
         var nomeVar = ipt_nome.value;
+        var autorVar = ipt_autor.value
         var generoVar = (document.querySelector('input[name="genero"]:checked').value);
         var qtdPaginaVar = ipt_qtdPagina.value;
         var urlCapaVar = ipt_urlCapa.value;
@@ -182,7 +183,8 @@
             nomeVar == "" ||
             generoVar == "" ||
             qtdPaginaVar == "" ||
-            urlCapaVar == ""
+            urlCapaVar == "" ||
+            autorVar == ""
         ) {
             alert("Todos os campos devem ser preenchidos!");
             return false;
@@ -200,6 +202,7 @@
             },
             body: JSON.stringify({
                 nomeServer: nomeVar,
+                autorServer: autorVar,
                 generoServer: generoVar,
                 qtdPaginaServer: qtdPaginaVar,
                 urlCapaServer: urlCapaVar

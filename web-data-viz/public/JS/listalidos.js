@@ -21,7 +21,15 @@ function mostrarLido(){
           lidos = dados
 
           for(i=0; i<lidos.length; i++){
-        div_lidos.innerHTML += `<div><img src="${lidos[i].urlCapa}" alt="" width="100px" height="150px"><br>${lidos[i].nome}<br>${lidos[i].genero}<br><button onclick="excluir()">Excluir</button></div>`
+        div_lidos.innerHTML += `<div class="container_livro">
+    <button class="btn_fechar" onclick="excluirLivro()">×</button>
+    <div class="conteudo_livro">
+      <img src="${lidos[i].urlCapa}" alt="" width="100px" height="150px">
+      <div class="livro_nome"><span class="escrita_titulo">${lidos[i].nome}</span></div>
+      <div class="livro_autor"><span class="escrita_autor"><u>${lidos[i].autor}</u></span></div>
+      <div class="livro_genero"><span class="escrita_genero">${lidos[i].genero}</span></div>
+    </div>
+  </div>`
       }
            
         });
@@ -39,4 +47,8 @@ function mostrarLido(){
 
 
     
+}
+
+function excluirLivro(){
+  
 }

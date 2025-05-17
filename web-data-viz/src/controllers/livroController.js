@@ -4,6 +4,7 @@ var livroModel = require("../models/livroModel");
 function cadastrar(req, res) {
 
     var nome = req.body.nomeServer;
+    var autor = req.body.autorServer
     var genero = req.body.generoServer;
     var qtdPagina = req.body.qtdPaginaServer;
     var urlCapa = req.body.urlCapaServer;
@@ -20,7 +21,7 @@ function cadastrar(req, res) {
     }else {
 
         
-        livroModel.cadastrar(nome, genero, qtdPagina, urlCapa)
+        livroModel.cadastrar(nome, autor, genero, qtdPagina, urlCapa)
             .then(
                 function (resultado) {
                     res.json(resultado);

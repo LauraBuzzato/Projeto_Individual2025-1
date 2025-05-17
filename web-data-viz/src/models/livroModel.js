@@ -1,9 +1,9 @@
 var database = require("../database/config")
 
-function cadastrar(nome, genero, qtdPagina, urlCapa) {
+function cadastrar(nome, autor, genero, qtdPagina, urlCapa) {
 
     var instrucaoSql = `
-        INSERT INTO livro (nome, genero, qtdPagina, urlCapa) VALUES ('${nome}', '${genero}', ${qtdPagina}, '${urlCapa}');
+        INSERT INTO livro (nome, autor, genero, qtdPagina, urlCapa) VALUES ('${nome}', '${autor}', '${genero}', ${qtdPagina}, '${urlCapa}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -26,7 +26,7 @@ function inserirLido(idLivroLido, idUsuario){
 }
 
 function mostrarLido(idUsuario){
-    var instrucaoSql = `select nome, genero, urlCapa from livro lv 
+    var instrucaoSql = `select nome, autor, genero, urlCapa from livro lv 
                         left join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
