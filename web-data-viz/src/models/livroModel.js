@@ -11,7 +11,23 @@ function cadastrar(nome, genero, qtdPagina, urlCapa) {
 
 function buscarLivros() {
 
-    var instrucaoSql = `select nome, genero, qtdPagina, urlCapa from livro order by nome asc;`;
+    var instrucaoSql = `select id, nome, genero, qtdPagina, urlCapa from livro order by nome asc;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function inserirLido(idLivroLido, idUsuario){
+    var instrucaoSql = `
+        insert into lido (fklivro, fkusuario) values (${idLivroLido},${idUsuario});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function mostrarLido(idUsuario){
+    var instrucaoSql = `select nome, genero, urlCapa from livro lv 
+                        left join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -19,5 +35,7 @@ function buscarLivros() {
 
 module.exports = {
     cadastrar,
-    buscarLivros
+    buscarLivros,
+    inserirLido,
+    mostrarLido
 };

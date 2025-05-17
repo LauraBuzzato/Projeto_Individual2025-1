@@ -49,8 +49,66 @@ function buscarLivros(req, res) {
         });
 }
 
+function inserirLido(req, res){
+    var idLivroLido = req.body.idLivroLidoServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+
+    if (idLivroLido == undefined) {
+        res.status(400).send("idLivroLido está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("idUsuario está undefined!");
+    } else {
+
+        
+        livroModel.inserirLido(idLivroLido, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+function mostrarLido(req, res){
+    var idUsuario = req.body.idUsuarioServer;
+
+
+    if (idUsuario == undefined) {
+        res.status(400).send("idUsuario está undefined!");
+    } else {
+
+        
+        livroModel.mostrarLido(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 module.exports = {
     cadastrar,
-    buscarLivros
+    buscarLivros,
+    inserirLido,
+    mostrarLido
 }

@@ -58,11 +58,11 @@
                     <div class="campo">
                         <label for="estrela">Nota:</label>
                         <div class="rating">
-                            <input type="radio" name="estrela" id="estrela1"><label for="estrela1"></label>
-                            <input type="radio" name="estrela" id="estrela2"><label for="estrela2"></label>
-                            <input type="radio" name="estrela" id="estrela3"><label for="estrela3"></label>
-                            <input type="radio" name="estrela" id="estrela4"><label for="estrela4"></label>
-                            <input type="radio" name="estrela" id="estrela5"><label for="estrela5"></label>
+                            <input type="radio" name="estrela" id="estrela1" value="1"><label for="estrela1"></label>
+                            <input type="radio" name="estrela" id="estrela2" value="2"><label for="estrela2"></label>
+                            <input type="radio" name="estrela" id="estrela3" value="3"><label for="estrela3"></label>
+                            <input type="radio" name="estrela" id="estrela4" value="4"><label for="estrela4"></label>
+                            <input type="radio" name="estrela" id="estrela5" value="5"><label for="estrela5"></label>
                         </div>
                     </div>
                     <div class="campo espacamento">
@@ -160,8 +160,8 @@
 
 <script>
     function adicionar(){
-        var selecionados = document.querySelectorAll('input[name="estrela"]:checked')
-        console.log(selecionados)
+        var selecionado = document.querySelector('input[name="estrela"]:checked').value;
+        console.log(selecionado)
     }
 </script>
 

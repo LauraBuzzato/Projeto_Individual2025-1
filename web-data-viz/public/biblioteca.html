@@ -12,9 +12,10 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="JS/sessao.js"></script>
+    <script src="JS/listalidos.js"></script>
 </head>
 
-<body class="fundobiblioteca">
+<body class="fundobiblioteca" onload="mostrarLido()">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -46,8 +47,11 @@
                 <select name="" id="listalidos" class="listalidos">
                     <option value="">selecione o livro</option>
                 </select>
-                <button>Marcar como lido</button>
+                <button onclick="marcarLido()">Marcar como lido</button>
             </div>
+        </div>
+        <div id="div_lidos">
+
         </div>
     </div>
 
@@ -116,19 +120,55 @@
 </script>
 
 <script>
-    fetch("/livros/buscarLivros", {
+
+var livros = {}
+
+fetch("/livros/buscarLivros", {
     method: "POST"
 })
 .then(res => res.json())
 .then(dados => {
-    console.log(dados);
     dados.forEach(livro => {
-        const opt = new Option(livro.nome, livro.nome);
-        $('#listalidos').append(opt);
-    });
-    $('#listalidos').trigger('change.select2');
+        livros[livro.id] = livro
+        const opt = new Option(livro.nome, livro.id)
+        $('#listalidos').append(opt)
+    })
+    $('#listalidos').trigger('change.select2')
 })
-.catch(erro => console.error("Erro ao carregar livros:", erro));
+.catch(erro => console.error("Erro ao carregar livros:", erro))
+
+function marcarLido(){
+    var idLivroLidoVar = listalidos.value
+    var idUsuarioVar = sessionStorage.ID_USUARIO
+    
+    fetch("/livros/inserirLido", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idLivroLidoServer: idLivroLidoVar,
+        idUsuarioServer: idUsuarioVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            mostrarLido()
+
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+      
+
+}
 
 
 </script>

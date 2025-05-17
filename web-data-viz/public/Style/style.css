@@ -839,11 +839,11 @@ html {
 
 .rating {
     margin-top: 0.5%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateY(180deg);
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform: rotateY(180deg);
+    max-width: 100%;
 }
 
 .rating input {
@@ -853,37 +853,34 @@ html {
 .rating label {
     display: block;
     cursor: pointer;
-    width: 50px;
+    width: 2.5em;
 }
 
-.rating label:before {
+.rating label:before,
+.rating label:after {
     content: '\f005';
-    font-family: fontAwesome;
-    position: relative;
+    font-family: FontAwesome;
+    font-size: 2.5em;
     display: block;
-    font-size: 50px;
+    position: relative;
     color: #CDB28A;
 }
 
 .rating label:after {
-    content: '\f005';
-    font-family: fontAwesome;
-    position: absolute;
-    display: block;
-    font-size: 50px;
     color: #ffffa8;
+    position: absolute;
     top: 0;
     opacity: 0;
-    transition: .5;
-
+    transition: opacity 0.3s;
 }
 
 .rating label:hover:after,
-.rating label:hover~label:after,
-.rating input:checked~label:after {
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
     opacity: 1;
 }
 
+
 .espacamento {
-    margin-top: 13%;
+    margin-top: 5%;
 }
