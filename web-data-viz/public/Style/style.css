@@ -706,7 +706,9 @@ html {
 }
 
 .fundostatus {
+    position: relative;
     background-color: #f6f1de;
+    min-height: 80rem;
 
 }
 
@@ -718,16 +720,29 @@ html {
     padding: 2%;
 }
 
+.corpo {
+  position: relative;
+  display: flex;
+  gap: 2%;
+  min-height: 80rem;
+}
+
 .graficos-kpis {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    min-height: 80%;
-    flex-direction: column;
-    font-family: "Itim", cursive;
-    font-size: 1.3rem;
-    gap: 7%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  border-radius: 50px;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: "Itim", cursive;
+  font-size: 1.3rem;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .qtdlivros {
@@ -737,8 +752,9 @@ html {
     text-align: center;
 }
 
-.qtdlivros h2 {
+.qtdlivros .css_qtdlidos {
     font-size: 5rem;
+    margin-top: 13%;
 }
 
 .fundostatus .corpo {
@@ -752,6 +768,7 @@ html {
 }
 
 .fundostatus .corpo .titulo {
+    margin-left: 32%;
     font-size: 1.5rem;
     width: 65%;
 }
@@ -794,8 +811,11 @@ html {
     outline: none;
     height: 10rem;
     resize: none;
-    padding: 1.5%;
+    padding: 2.5%;
+    padding-left: 5%;
+    padding-right: 5%;
     font-family: "Itim", cursive;
+    font-size: 1.1rem;
 }
 
 .fundoavaliacoes .form .nomelivro {
@@ -838,7 +858,7 @@ html {
     cursor: pointer;
 }
 
-.rating {
+.estrelas {
     margin-top: 0.5%;
     display: flex;
     justify-content: center;
@@ -847,18 +867,18 @@ html {
     max-width: 100%;
 }
 
-.rating input {
+.estrelas input {
     display: none;
 }
 
-.rating label {
+.estrelas label {
     display: block;
     cursor: pointer;
     width: 2.5em;
 }
 
-.rating label:before,
-.rating label:after {
+.estrelas label:before,
+.estrelas label:after {
     content: '\f005';
     font-family: FontAwesome;
     font-size: 2.5em;
@@ -867,7 +887,7 @@ html {
     color: #CDB28A;
 }
 
-.rating label:after {
+.estrelas label:after {
     color: #ffffa8;
     position: absolute;
     top: 0;
@@ -875,9 +895,9 @@ html {
     transition: opacity 0.3s;
 }
 
-.rating label:hover:after,
-.rating label:hover ~ label:after,
-.rating input:checked ~ label:after {
+.estrelas label:hover:after,
+.estrelas label:hover~label:after,
+.estrelas input:checked~label:after {
     opacity: 1;
 }
 
@@ -886,60 +906,79 @@ html {
     margin-top: 5%;
 }
 
-.organizacao{
+.organizacao {
     margin-top: 1.5%;
 }
 
 #div_lidos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; 
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 
 .container_livro {
-  position: relative; /* necessário para posicionar o botão "X" dentro */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
 
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 1.5%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 25%;
-  min-height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1.5%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 25%;
+    min-height: 300px;
 }
 
 .btn_fechar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  color: #900; /* ou o vermelho do botão anterior */
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    color: #900;
+    /* ou o vermelho do botão anterior */
+    cursor: pointer;
 }
 
 .btn_fechar:hover {
-  color: red;
-  transform: scale(1.1);
+    color: red;
+    transform: scale(1.1);
 }
 
-.escrita_titulo{
+.escrita_titulo {
     color: black;
     font-size: 1.7rem;
 }
 
-.escrita_autor{
+.escrita_autor {
     font-size: 1.3rem;
 }
 
-.escrita_genero{
+.escrita_genero {
     font-size: 1.1rem;
     color: #CDB28A;
 }
+
+#contador.alerta {
+    color: red;
+    font-weight: bold;
+}
+
+#ipt_avaliacao.shake {
+    animation: shake 0.3s;
+    border: 2px solid red;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+  }

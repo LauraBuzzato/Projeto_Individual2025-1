@@ -52,11 +52,19 @@ limit 1;`;
     return database.executar(instrucaoSql);
 }
 
+function mostrarquantidadelivros(idUsuario){
+    var instrucaoSql = `select count(fklivro) total from lido where fkusuario = '${idUsuario}' group by fkusuario;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrar,
     buscarLivros,
     inserirLido,
     mostrarLido,
     excluirLido,
-    mostrarKPI
+    mostrarKPI,
+    mostrarquantidadelivros
 };

@@ -27,4 +27,8 @@ router.get("/mostrarKPI", function (req, res) {
     livroController.mostrarKPI(req, res);
 });
 
+router.post("/mostrarquantidadelivros", function (req, res) {
+    livroController.mostrarquantidadelivros(req, res);
+});
+
 module.exports = router;

@@ -19,7 +19,7 @@ create table lido(
 fkusuario int not null,
 fklivro int not null,
 nota int,
-avaliacao varchar(200),
+avaliacao varchar(1000),
 primary key (fkusuario, fklivro),
 constraint fkusuario foreign key (fkusuario) references usuario(id),
 constraint fklivro foreign key (fklivro) references livro(id));

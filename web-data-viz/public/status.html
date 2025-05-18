@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="Style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="JS/sessao.js"></script>
+    <script src="JS/status.js"></script>
 </head>
 
-<body class="fundostatus">
+<body class="fundostatus" onload="mostrarquantidadelivros()">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -43,7 +44,9 @@
             </div>
             <div class="qtdlivros">
                 <h3>Quantidade de livros lidos:</h3>
-                <h2>X</h2>
+                <div class="css_qtdlidos">
+                <div id="div_qtdlidos"></div>
+                </div>
             </div>
 
         </div>

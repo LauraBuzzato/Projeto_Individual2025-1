@@ -14,6 +14,7 @@
     <script src="JS/sessao.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="JS/avaliacoes.js"></script>
 </head>
 
 <body class="fundoavaliacoes">
@@ -48,27 +49,28 @@
                 <div class="form">
 
                     <div class="campo">
-                        <label for="ipt_senha">Livro a ser avaliado:</label>
+                        <label for="nomelivro">Livro a ser avaliado:</label>
                         <select name="" id="nomelivro" class="nomelivro">
-                            <option value="0">selecione o livro</option>
+                            <option value="">selecione o livro</option>
 
                         </select>
                         <a href="cadastrolivro.html">O livro não está na lista? Clique aqui!</a>
                     </div>
                     <div class="campo">
                         <label for="estrela">Nota:</label>
-                        <div class="rating">
-                            <input type="radio" name="estrela" id="estrela1" value="1"><label for="estrela1"></label>
-                            <input type="radio" name="estrela" id="estrela2" value="2"><label for="estrela2"></label>
+                        <div class="estrelas">
+                            <input type="radio" name="estrela" id="estrela1" value="5"><label for="estrela1"></label>
+                            <input type="radio" name="estrela" id="estrela2" value="4"><label for="estrela2"></label>
                             <input type="radio" name="estrela" id="estrela3" value="3"><label for="estrela3"></label>
-                            <input type="radio" name="estrela" id="estrela4" value="4"><label for="estrela4"></label>
-                            <input type="radio" name="estrela" id="estrela5" value="5"><label for="estrela5"></label>
+                            <input type="radio" name="estrela" id="estrela4" value="2"><label for="estrela4"></label>
+                            <input type="radio" name="estrela" id="estrela5" value="1"><label for="estrela5"></label>
                         </div>
                     </div>
                     <div class="campo espacamento">
-                        <label for="ipt_email">Escreva sua avaliação aqui:</label>
+                        <label for="ipt_avaliacao">Escreva sua avaliação aqui:</label>
                         <div class="tempo">
-                            <textarea name="" id="ipt_email"></textarea>
+                            <textarea name="" id="ipt_avaliacao" oninput="verificarLimite()" maxlength="999"></textarea>
+                            <p id="contador">999 caracteres restantes</p>
                         </div>
                     </div>
                     <button class="avaliar" onclick="adicionar()">Adicionar Avaliação</button>
@@ -134,7 +136,9 @@
         </div>
     </div>
 
+    
 </body>
+
 
 <script>
     $(document).ready(function () {
@@ -142,27 +146,5 @@
     });
 </script>
 
-<script>
-    fetch("/livros/buscarLivros", {
-        method: "POST"
-    })
-        .then(res => res.json())
-        .then(dados => {
-            console.log(dados);
-            dados.forEach(livro => {
-                const opt = new Option(livro.nome, livro.nome);
-                $('#nomelivro').append(opt);
-            });
-            $('#nomelivro').trigger('change.select2');
-        })
-        .catch(erro => console.error("Erro ao carregar livros:", erro));
-</script>
-
-<script>
-    function adicionar(){
-        var selecionado = document.querySelector('input[name="estrela"]:checked').value;
-        console.log(selecionado)
-    }
-</script>
 
 </html>
