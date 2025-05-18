@@ -161,6 +161,56 @@ function mostrarquantidadelivros(req, res) {
 
 }
 
+function mostrargeneros(req, res){
+    var idUsuario = req.body.idUsuarioServer
+
+    if (!idUsuario) {
+        res.status(400).send("Seu idUsuario está undefined!");
+    }
+    else{
+        livroModel.mostrargeneros(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao procurar quantidade! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function mostraravaliacoes(req, res){
+    var idUsuario = req.body.idUsuarioServer
+
+    if (!idUsuario) {
+        res.status(400).send("Seu idUsuario está undefined!");
+    }
+    else{
+        livroModel.mostraravaliacoes(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao procurar quantidade! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 module.exports = {
     cadastrar,
@@ -169,5 +219,7 @@ module.exports = {
     mostrarLido,
     excluirLido,
     mostrarKPI,
-    mostrarquantidadelivros
+    mostrarquantidadelivros,
+    mostrargeneros,
+    mostraravaliacoes
 }

@@ -31,4 +31,12 @@ router.post("/mostrarquantidadelivros", function (req, res) {
     livroController.mostrarquantidadelivros(req, res);
 });
 
+router.post("/mostrargeneros", function (req, res) {
+    livroController.mostrargeneros(req, res);
+});
+
+router.post("/mostraravaliacoes", function (req, res) {
+    livroController.mostraravaliacoes(req, res);
+});
+
 module.exports = router;

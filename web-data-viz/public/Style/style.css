@@ -708,41 +708,29 @@ html {
 .fundostatus {
     position: relative;
     background-color: #f6f1de;
-    min-height: 80rem;
-
+    min-height: 50rem;
 }
 
 .containergraficorosquinha {
-    width: 70%;
+    width: 80%;
     text-align: center;
     background-color: white;
     border-radius: 50px;
     padding: 2%;
 }
 
-.corpo {
-  position: relative;
-  display: flex;
-  gap: 2%;
-  min-height: 80rem;
-}
-
 .graficos-kpis {
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 30%;
-  height: 100%;
+  height: fit-content;
   border-radius: 50px;
   padding: 1rem;
-  box-sizing: border-box;
   font-family: "Itim", cursive;
   font-size: 1.3rem;
-  gap: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  gap: 20px;
 }
 
 .qtdlivros {
@@ -750,6 +738,7 @@ html {
     border-radius: 50px;
     padding: 8%;
     text-align: center;
+    width: 80%;
 }
 
 .qtdlivros .css_qtdlidos {
@@ -768,9 +757,36 @@ html {
 }
 
 .fundostatus .corpo .titulo {
-    margin-left: 32%;
     font-size: 1.5rem;
     width: 65%;
+}
+
+.containeravaliacoes{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container_avaliacao{
+    background-color: white;
+    margin-bottom: 1.5rem; 
+    padding: 1rem;         
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.containertextos{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.tamanhoestrela{
+    font-size: 1.4rem;
 }
 
 .fundoavaliacoes {

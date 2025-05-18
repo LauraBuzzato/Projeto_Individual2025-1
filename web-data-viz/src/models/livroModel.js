@@ -59,6 +59,21 @@ function mostrarquantidadelivros(idUsuario){
     return database.executar(instrucaoSql);
 }
 
+function mostrargeneros(idUsuario){
+    var instrucaoSql = `select genero, count(fklivro) qtd from livro lv inner join lido ld on lv.id = ld.fklivro 
+        where fkusuario = ${idUsuario} group by genero;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function mostraravaliacoes(idUsuario){
+    var instrucaoSql = `select urlCapa, nota, avaliacao from livro lv inner join lido ld on lv.id = ld.fklivro where fkusuario = '${idUsuario}' and avaliacao not like 'null';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrar,
     buscarLivros,
@@ -66,5 +81,7 @@ module.exports = {
     mostrarLido,
     excluirLido,
     mostrarKPI,
-    mostrarquantidadelivros
+    mostrarquantidadelivros,
+    mostrargeneros,
+    mostraravaliacoes
 };

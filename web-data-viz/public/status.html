@@ -12,7 +12,7 @@
     <script src="JS/status.js"></script>
 </head>
 
-<body class="fundostatus" onload="mostrarquantidadelivros()">
+<body class="fundostatus" onload="mostrarquantidadelivros(), mostrargeneros(), mostraravaliacoes()">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -45,14 +45,16 @@
             <div class="qtdlivros">
                 <h3>Quantidade de livros lidos:</h3>
                 <div class="css_qtdlidos">
-                <div id="div_qtdlidos"></div>
+                    <div id="div_qtdlidos"></div>
                 </div>
             </div>
 
         </div>
         <div class="titulo">
             <h2>Suas avaliações</h2>
-            <div class="containeravaliacoes"></div>
+            <div class="containeravaliacoes">
+                <div id="div_avaliacao"></div>
+            </div>
         </div>
     </div>
 
@@ -118,18 +120,27 @@
 <script>
 
     const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+        labels: [],
         datasets: [{
             label: 'My First Dataset',
-            data: [300, 50, 100],
+            data: [],
             backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(255, 159, 64)',
+                'rgb(201, 203, 207)',
+                'rgb(255, 87, 34)',
+                'rgb(63, 81, 181)',
+                'rgb(0, 150, 136)',
+                'rgb(233, 30, 99)',
+                'rgb(139, 195, 74)',
+                'rgb(103, 58, 183)',
+                'rgb(3, 169, 244)',
+                'rgb(255, 193, 7)',
+                'rgb(96, 125, 139)'
             ],
             hoverOffset: 4
         }]
@@ -138,9 +149,22 @@
     const config = {
         type: 'doughnut',
         data: data,
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const label = context.label || '';
+                            const value = context.parsed || 0;
+                            return label + ': ' + value;
+                        }
+                    }
+                }
+            }
+        }
     };
 
-    const myChart = new Chart(
+    var myChart = new Chart(
         document.getElementById('myChart'),
         config
     )
