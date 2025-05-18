@@ -19,4 +19,12 @@ router.post("/mostrarLido", function (req, res) {
     livroController.mostrarLido(req, res);
 });
 
+router.delete("/excluirLido", function (req, res) {
+  livroController.excluirLido(req, res);
+});
+
+router.get("/mostrarKPI", function (req, res) {
+    livroController.mostrarKPI(req, res);
+});
+
 module.exports = router;

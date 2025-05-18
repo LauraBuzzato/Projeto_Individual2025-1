@@ -106,10 +106,41 @@ function mostrarLido(req, res){
     }
 }
 
+function excluirLido(req, res) {
+  var idLivro = req.body.idLivroServer
+  var idUsuario = req.body.idUsuarioServer
+
+  if (!idLivro || !idUsuario) {
+    return res.status(400).json({ erro: "idLivro ou idUsuario indefinido!" });
+  }
+
+  livroModel.excluirLido(idLivro, idUsuario)
+    .then(resultado => {
+      res.status(200).json({ mensagem: "Livro excluído com sucesso!" });
+    })
+    .catch(erro => {
+      console.error("Erro ao excluir livro:", erro.sqlMessage);
+      res.status(500).json({ erro: "Erro ao excluir livro." });
+    });
+}
+
+function mostrarKPI(req, res) {
+    livroModel.mostrarKPI()
+        .then((resultado) => {
+            res.json(resultado);
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar livros:", erro);
+            res.status(500).json({ erro: erro.sqlMessage });
+        });
+}
+
 
 module.exports = {
     cadastrar,
     buscarLivros,
     inserirLido,
-    mostrarLido
+    mostrarLido,
+    excluirLido,
+    mostrarKPI
 }

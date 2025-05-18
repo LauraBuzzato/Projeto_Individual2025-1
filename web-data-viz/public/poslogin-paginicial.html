@@ -8,9 +8,10 @@
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="Style/style.css">
     <script src="JS/sessao.js"></script>
+    <script src="JS/KPIpaginicial.js"></script>
 </head>
 
-<body class="poslogin">
+<body class="poslogin" onload="mostrarKPI()">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -81,16 +82,16 @@
             <div class="KPIinicial">
                 <div class="coluna1">
                     <h3>Queridinho dos nossos leitores:</h3>
-                    <img src="img/capa livro.png" alt="" class="capalivro">
+                    <div id="div_capalivro"></div>
                 </div>
                 <div class="coluna2">
                     <div class="quadrado1">
                         <h3>Quantas pessoas já leram ele:</h3>
-                        <h3 class="numero">X</h3>
+                        <div id="div_qtdleitores"></div>
                     </div>
                     <div class="quadrado2">
-                        <h3>Quantas avaliações maiores que 4 estrelas ele possui:</h3>
-                        <h3 class="numero">X</h3>
+                        <h3>Média de avaliações:</h3>
+                        <div id="div_mediavaliacoes"></div>
                     </div>
                 </div>
             </div>
