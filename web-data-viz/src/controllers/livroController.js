@@ -211,6 +211,24 @@ function mostraravaliacoes(req, res){
     }
 }
 
+function excluirAvaliacao(req, res){
+    var idLivro = req.body.idLivroServer
+    var idUsuario = req.body.idUsuarioServer
+
+    if (!idLivro || !idUsuario) {
+        return res.status(400).json({ erro: "idLivro ou idUsuario indefinido!" });
+    }
+
+    livroModel.excluirAvaliacao(idLivro, idUsuario)
+        .then(resultado => {
+            res.status(200).json({ mensagem: "Livro excluído com sucesso!" });
+        })
+        .catch(erro => {
+            console.error("Erro ao excluir livro:", erro.sqlMessage);
+            res.status(500).json({ erro: "Erro ao excluir livro." });
+        });
+}
+
 
 module.exports = {
     cadastrar,
@@ -221,5 +239,6 @@ module.exports = {
     mostrarKPI,
     mostrarquantidadelivros,
     mostrargeneros,
-    mostraravaliacoes
+    mostraravaliacoes,
+    excluirAvaliacao
 }

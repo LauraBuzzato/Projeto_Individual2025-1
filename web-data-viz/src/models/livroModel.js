@@ -68,7 +68,14 @@ function mostrargeneros(idUsuario){
 }
 
 function mostraravaliacoes(idUsuario){
-    var instrucaoSql = `select urlCapa, nota, avaliacao from livro lv inner join lido ld on lv.id = ld.fklivro where fkusuario = '${idUsuario}' and avaliacao not like 'null';`;
+    var instrucaoSql = `select urlCapa, nota, avaliacao, fklivro from livro lv inner join lido ld on lv.id = ld.fklivro where fkusuario = '${idUsuario}' and avaliacao not like 'null';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function excluirAvaliacao(idLivro, idUsuario){
+    var instrucaoSql = `update lido set nota = null, avaliacao = null where fkusuario = ${idUsuario} and fklivro =${idLivro};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -83,5 +90,6 @@ module.exports = {
     mostrarKPI,
     mostrarquantidadelivros,
     mostrargeneros,
-    mostraravaliacoes
+    mostraravaliacoes,
+    excluirAvaliacao
 };

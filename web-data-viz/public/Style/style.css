@@ -776,6 +776,10 @@ html {
     border-radius: 20px !important;
     display: flex !important;
     align-items: center !important;
+    position: relative;
+    display: flex;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
     
 }
 
@@ -948,7 +952,6 @@ html {
     background: none;
     font-size: 1.5rem;
     color: #900;
-    /* ou o vermelho do botão anterior */
     cursor: pointer;
 }
 
@@ -1008,20 +1011,14 @@ html {
     margin: 0 !important;
 }
 
-.tamanhoestrela h2{
-    font-size: 1.4rem !important;
-}
-
 .fundocalculadora .containeravaliacoes{
     margin-top: 2%;
-}
-
-.fundocalculadora .main{
-    background-color: #f6f1de;
-}
-
-.containeravaliacoes{
     max-height: 23rem;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+.fundocalculadora .tamanhoestrela{
+    display: flex;
+    justify-content: start;
 }

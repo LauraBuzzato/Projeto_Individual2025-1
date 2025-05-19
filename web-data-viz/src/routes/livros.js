@@ -39,4 +39,8 @@ router.post("/mostraravaliacoes", function (req, res) {
     livroController.mostraravaliacoes(req, res);
 });
 
+router.post("/excluirAvaliacao", function (req, res) {
+    livroController.excluirAvaliacao(req, res);
+});
+
 module.exports = router;
