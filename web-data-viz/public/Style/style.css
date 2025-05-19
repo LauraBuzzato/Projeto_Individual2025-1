@@ -494,11 +494,13 @@ html {
     padding: 40px;
     text-align: center;
     width: 50%;
-    height: 77%;
+    min-height: 77%;
     padding-left: 5%;
     padding-right: 5%;
     color: #7A6448;
     font-family: "Itim", cursive;
+    margin-top: 20%;
+    margin-bottom: 20%;
 
 }
 
@@ -762,31 +764,19 @@ html {
 }
 
 .containeravaliacoes{
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
 
 }
 
 .container_avaliacao{
-    background-color: white;
-    margin-bottom: 1.5rem; 
-    padding: 1rem;         
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
+    background-color: white !important;
+    margin-bottom: 1.5rem !important; 
+    padding: 1rem !important;         
+    border-radius: 20px !important;
+    display: flex !important;
+    align-items: center !important;
     
-}
-
-.containertextos{
-    display: flex;
-    flex-direction: column;
-    margin-left: 2%;
-    justify-content: center;
-    font-size: 0.9rem;
-}
-
-.tamanhoestrela{
-    font-size: 1.4rem;
 }
 
 .fundoavaliacoes {
@@ -867,7 +857,7 @@ html {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .sair {
@@ -998,3 +988,40 @@ html {
     75% { transform: translateX(-4px); }
     100% { transform: translateX(0); }
   }
+
+.containertextos{
+    display: flex !important;
+    flex-direction: column !important;
+    margin-left: 2% !important;
+    justify-content: center !important;
+}
+
+.containertextos h2{
+    font-size: 1.3rem !important;
+    color: black;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-left: 2% !important;
+    justify-content: center !important;
+    justify-self: flex-start;
+    text-align: start;
+    margin: 0 !important;
+}
+
+.tamanhoestrela h2{
+    font-size: 1.4rem !important;
+}
+
+.fundocalculadora .containeravaliacoes{
+    margin-top: 2%;
+}
+
+.fundocalculadora .main{
+    background-color: #f6f1de;
+}
+
+.containeravaliacoes{
+    max-height: 23rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}

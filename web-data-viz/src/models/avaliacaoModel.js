@@ -20,7 +20,15 @@ function adicionar(nota, idlivro, textoAvaliacao, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function ver(idLivro){
+    var instrucaoSql = `select urlCapa, nota, avaliacao from livro lv inner join lido ld on lv.id = ld.fklivro where fklivro = '${idLivro}';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     verificarsefoilido,
-    adicionar
+    adicionar,
+    ver
 }

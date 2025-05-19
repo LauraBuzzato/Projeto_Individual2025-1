@@ -17,6 +17,7 @@
 </head>
 
 <body class="fundocalculadora">
+    
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -79,13 +80,16 @@
                     </div>
                     <div class="botoes">
                         <button class="calcular" onclick="calcular()">Calcular</button>
-                        <button class="feedbacks">Ver avaliações</button>
+                        <button class="feedbacks" onclick="ver()">Ver avaliações</button>
                     </div>
                     <a href="avaliacoes.html">Adicionar avaliação</a>
                 </div>
             </div>
             <div class="grafico hidden" id="teste">
             <canvas id="meuGrafico"></canvas>
+            </div>
+            <div class="containeravaliacoes hidden" id="containeravaliacoes">
+                <div id="div_avaliacao"></div>
             </div>
         </div>
     </div>
@@ -145,6 +149,7 @@
             </a>
         </div>
     </div>
+   
 </body>
 
 <script>

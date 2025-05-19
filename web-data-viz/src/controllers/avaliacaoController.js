@@ -65,7 +65,33 @@ function adicionar(req, res) {
     }
 }
 
+function ver(req, res){
+    var idLivro = req.body.idLivroServer
+
+    if (!idLivro) {
+        res.status(400).send("Seu idLivro está undefined!");
+    }
+    else{
+        avaliacaoModel.ver(idLivro)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao procurar quantidade! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     verificarsefoilido,
-    adicionar
+    adicionar,
+    ver
 }

@@ -11,4 +11,8 @@ router.post("/adicionar", function (req, res) {
     avaliacaoController.adicionar(req, res);
 });
 
+router.post("/ver", function (req, res) {
+    avaliacaoController.ver(req, res);
+});
+
 module.exports = router;
