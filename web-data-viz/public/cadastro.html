@@ -166,7 +166,9 @@
           }, "1000");
 
         } else {
+          alert('Esse e-mail já foi cadastrado!')
           throw "Houve um erro ao tentar realizar o cadastro!";
+          
         }
       })
       .catch(function (resposta) {

@@ -1022,3 +1022,22 @@ html {
     display: flex;
     justify-content: start;
 }
+
+.containertextos h2 {
+  word-wrap: break-word;    /* Quebra palavras grandes */
+  overflow-wrap: break-word;
+  white-space: normal;      /* Permite que o texto quebre em várias linhas */
+  max-width: 100%;          /* Garante que o texto respeite a largura do contêiner */
+}
+
+.container_avaliacao {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Caso precise quebrar o layout em telas pequenas */
+}
+
+.containertextos {
+  flex: 1;
+  min-width: 0;
+}

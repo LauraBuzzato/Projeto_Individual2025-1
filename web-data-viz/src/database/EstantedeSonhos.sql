@@ -4,7 +4,7 @@ use estantedesonhos;
 create table usuario(
 id int not null primary key auto_increment,
 nome varchar(45),
-email varchar(45),
+email varchar(45) unique,
 senha varchar(45));
 
 create table livro(
