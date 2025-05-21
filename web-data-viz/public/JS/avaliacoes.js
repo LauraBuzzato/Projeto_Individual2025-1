@@ -23,8 +23,16 @@ function verificarLimite() {
 
 var livros = {}
 
-fetch("/livros/buscarLivros", {
-    method: "POST"
+var idUsuario = sessionStorage.ID_USUARIO
+
+fetch("/livros/mostrarLido", {
+    method: "POST",
+    headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: idUsuario
+        }),
 })
     .then(res => res.json())
     .then(dados => {

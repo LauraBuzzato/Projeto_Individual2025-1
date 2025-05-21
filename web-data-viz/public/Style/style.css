@@ -1024,20 +1024,38 @@ html {
 }
 
 .containertextos h2 {
-  word-wrap: break-word;    /* Quebra palavras grandes */
+  word-wrap: break-word;    
   overflow-wrap: break-word;
-  white-space: normal;      /* Permite que o texto quebre em várias linhas */
-  max-width: 100%;          /* Garante que o texto respeite a largura do contêiner */
+  white-space: normal;     
+  max-width: 100%;         
 }
 
 .container_avaliacao {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  flex-wrap: wrap; /* Caso precise quebrar o layout em telas pequenas */
+  flex-wrap: wrap; 
 }
 
 .containertextos {
   flex: 1;
   min-width: 0;
+}
+
+.fundostatus .containeravaliacoes{
+    max-height: 45rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.fundostatus .aAvaliacoes{
+    margin-left: 7rem;
+    color: #7A6448;
+    text-decoration: none;
+}
+
+.containertextos h3{
+    display: flex;
+    justify-content: start;
+    font-size: 1.7rem;
 }

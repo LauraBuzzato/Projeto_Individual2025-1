@@ -101,7 +101,7 @@ function ver() {
                         for (i = 0; i < avaliacoes.length; i++) {
                             nota = Number(avaliacoes[i].nota)
                             estrelas = `${estrela}`.repeat(nota)
-                            div_avaliacao.innerHTML += `<div class="container_avaliacao"><img src="${avaliacoes[i].urlCapa}" alt="" width="100px" height="150px"> <div class="containertextos"><div class="tamanhoestrela">${estrelas}</div><h2>${avaliacoes[i].avaliacao}</h2></div></div>`
+                            div_avaliacao.innerHTML += `<div class="container_avaliacao"><img src="${avaliacoes[i].urlCapa}" alt="" width="100px" height="150px"> <div class="containertextos"><h3 class="nomePessoa"><u>${avaliacoes[i].nome}</u></h3><div class="tamanhoestrela">${estrelas}</div><h2>${avaliacoes[i].avaliacao}</h2></div></div>`
                         }
                         document.getElementById('containeravaliacoes').classList.remove('hidden')
                         document.getElementById('teste').classList.add('hidden')
