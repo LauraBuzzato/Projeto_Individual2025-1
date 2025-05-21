@@ -38,7 +38,7 @@ fetch("/livros/mostrarLido", {
     .then(dados => {
         dados.forEach(livro => {
             livros[livro.id] = livro
-            const opt = new Option(livro.nome, livro.id)
+            const opt = new Option(livro.nome, livro.fklivro)
             $('#nomelivro').append(opt)
         })
         $('#nomelivro').trigger('change.select2')

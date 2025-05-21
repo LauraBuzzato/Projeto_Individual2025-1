@@ -17,7 +17,7 @@ function mostrarKPI() {
             if (resposta.ok) {
                 resposta.json().then(function (KPI) {
                     dados = KPI[0]
-                    div_capalivro.innerHTML = `<img src="${dados.urlCapa}" alt="" width="200px" height="280px">`
+                    div_capalivro.innerHTML = `<img src="${dados.urlCapa}" alt="" width="200px" height="300px">`
                     div_qtdleitores.innerHTML = `<h3>${dados.qtdLeitores}</h3>`
                     div_mediavaliacoes.innerHTML = `<h3>${dados.media}</h3>`
 

@@ -45,6 +45,10 @@ function mostrarKPI(){
     var instrucaoSql = `select nome, urlCapa, round(avg(nota),1) media, count(ld.fkusuario) as qtdLeitores from livro lv 
 inner join lido ld on ld.fklivro = lv.id
 group by fklivro
+having media = (select round(avg(nota),1) maiormedia from lido
+group by fklivro
+order by maiormedia desc
+limit 1)
 order by media desc
 limit 1;`;
 
