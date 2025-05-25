@@ -27,7 +27,8 @@ function inserirLido(idLivroLido, idUsuario){
 
 function mostrarLido(idUsuario){
     var instrucaoSql = `select fklivro, nome, autor, genero, urlCapa from livro lv 
-                        left join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario};`;
+                        left join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario}
+                        order by datahora DESC;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
