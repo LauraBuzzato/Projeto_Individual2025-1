@@ -13,9 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="JS/sessao.js"></script>
     <script src="JS/listalidos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="fundobiblioteca" onload="mostrarLido()">
+<body class="fundobiblioteca" onload="mostrarLido(), mostrarquantidadelivros()">
     <div class="header">
 
         <a href="poslogin-paginicial.html" class="nomesite">
@@ -48,12 +49,27 @@
                     <option value="">selecione o livro</option>
                 </select>
                 <button onclick="marcarLido()">Marcar como lido</button>
+
+            </div>
+            <a href="avaliacoes.html" class="aAvaliacoes"><u>Adicionar avaliação</u></a>
+            <div class="graficos-kpis">
+                
+                <div class="qtdlivros">
+                    <h3>Quantidade de livros lidos:</h3>
+                    <div class="css_qtdlidos">
+                        <div id="div_qtdlidos"></div>
+                    </div>
+                </div>
+                <div class="containergraficorosquinha">
+                    <h3>Gêneros mais lidos por você</h3>
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
         <div class="organizacao">
-        <div id="div_lidos"> 
+            <div id="div_lidos">
 
-        </div>
+            </div>
         </div>
     </div>
 
@@ -123,57 +139,110 @@
 
 <script>
 
-var livros = {}
+    var livros = {}
 
-fetch("/livros/buscarLivros", {
-    method: "POST"
-})
-.then(res => res.json())
-.then(dados => {
-    dados.forEach(livro => {
-        livros[livro.id] = livro
-        const opt = new Option(livro.nome, livro.id)
-        $('#listalidos').append(opt)
+    fetch("/livros/buscarLivros", {
+        method: "POST"
     })
-    $('#listalidos').trigger('change.select2')
-})
-.catch(erro => console.error("Erro ao carregar livros:", erro))
+        .then(res => res.json())
+        .then(dados => {
+            dados.forEach(livro => {
+                livros[livro.id] = livro
+                const opt = new Option(livro.nome, livro.id)
+                $('#listalidos').append(opt)
+            })
+            $('#listalidos').trigger('change.select2')
+        })
+        .catch(erro => console.error("Erro ao carregar livros:", erro))
 
-function marcarLido(){
-    var idLivroLidoVar = listalidos.value
-    var idUsuarioVar = sessionStorage.ID_USUARIO
-    
-    fetch("/livros/inserirLido", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idLivroLidoServer: idLivroLidoVar,
-        idUsuarioServer: idUsuarioVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+    function marcarLido() {
+        var idLivroLidoVar = listalidos.value
+        var idUsuarioVar = sessionStorage.ID_USUARIO
 
-        if (resposta.ok) {
-            mostrarLido()
+        fetch("/livros/inserirLido", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idLivroLidoServer: idLivroLidoVar,
+                idUsuarioServer: idUsuarioVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    mostrarLido()
 
 
-        } else {
-            alert('Este livro já foi marcado como lido!')
-          throw "Houve um erro ao tentar realizar o cadastro!";
+                } else {
+                    alert('Este livro já foi marcado como lido!')
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+
+
+    }
+
+
+</script>
+
+<script>
+
+    const data = {
+        labels: [],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(255, 159, 64)',
+                'rgb(201, 203, 207)',
+                'rgb(255, 87, 34)',
+                'rgb(63, 81, 181)',
+                'rgb(0, 150, 136)',
+                'rgb(233, 30, 99)',
+                'rgb(139, 195, 74)',
+                'rgb(103, 58, 183)',
+                'rgb(3, 169, 244)',
+                'rgb(255, 193, 7)',
+                'rgb(96, 125, 139)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const label = context.label || '';
+                            const value = context.parsed || 0;
+                            return label + ': ' + value;
+                        }
+                    }
+                }
+            }
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+    };
 
-      
-
-}
-
-
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    )
 </script>
 
 

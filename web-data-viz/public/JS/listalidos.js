@@ -18,6 +18,8 @@ function mostrarLido() {
 
       if (resposta.ok) {
         resposta.json().then(function (dados) {
+          mostrarquantidadelivros()
+          mostrargeneros()
           lidos = dados
 
           for (i = 0; i < lidos.length; i++) {
@@ -76,3 +78,89 @@ function excluirLivro(idlivroVar) {
     });
 }
 
+var quantidade = []
+
+function mostrarquantidadelivros() {
+    var idUsuarioVar = sessionStorage.ID_USUARIO
+    div_qtdlidos.innerHTML = ``
+
+    fetch("/livros/mostrarquantidadelivros", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: idUsuarioVar
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(function (KPI) {
+                    quantidade = KPI[0]
+                    div_qtdlidos.innerHTML = `<h3>${quantidade.total}</h3>`
+
+
+                });
+
+
+            } else {
+                throw "Houve um erro ao tentar buscar os dados!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
+
+
+
+}
+
+var generos = []
+var quantidades = []
+
+function mostrargeneros() {
+    var idUsuarioVar = sessionStorage.ID_USUARIO
+
+    fetch("/livros/mostrargeneros", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: idUsuarioVar
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(function (dados) {
+                    ggeneros = [];
+                quantidades = [];
+
+                dados.forEach(function (item) {
+                    generos.push(item.genero);
+                    quantidades.push(item.qtd);
+                });
+
+                myChart.data.labels = generos;
+                myChart.data.datasets[0].data = quantidades;
+                myChart.update();
+
+                });
+
+
+            } else {
+                throw "Houve um erro ao tentar buscar os dados!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
+}

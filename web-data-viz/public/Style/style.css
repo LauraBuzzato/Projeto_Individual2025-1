@@ -917,7 +917,7 @@ html {
 }
 
 .organizacao {
-    margin-top: 1.5%;
+    margin-top: -0.5%;
 }
 
 #div_lidos {
@@ -1058,4 +1058,31 @@ html {
     display: flex;
     justify-content: start;
     font-size: 1.7rem;
+}
+
+.fundobiblioteca .graficos-kpis{
+    position: static;
+    margin-left: 60%;
+    flex-direction: row;
+    margin-top: -8.2%;
+    font-size: 1rem;
+    width: 40%;
+    height: 24rem;
+}
+
+.fundobiblioteca .aAvaliacoes{
+    display: flex;
+    font-size: 1.1rem;
+    margin-left: 1%;
+    color: #7A6448;
+    
+}
+
+.fundobiblioteca .graficos-kpis .css_qtdlidos{
+    font-size: 4rem;
+    margin-top: 2%;
+}
+
+.fundobiblioteca .qtdlivros{
+    height: 15rem;
 }
