@@ -17,6 +17,16 @@ function buscarLivros() {
     return database.executar(instrucaoSql);
 }
 
+function buscarLivrosNaolidos(idUsuario) {
+
+    var instrucaoSql = `select id, nome, genero, qtdPagina, urlCapa 
+                        from livro lv where lv.id not in (select fklivro from lido where fkusuario=${idUsuario})
+                        order by nome asc;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function inserirLido(idLivroLido, idUsuario){
     var instrucaoSql = `
         insert into lido (fklivro, fkusuario) values (${idLivroLido},${idUsuario});
@@ -27,7 +37,7 @@ function inserirLido(idLivroLido, idUsuario){
 
 function mostrarLido(idUsuario){
     var instrucaoSql = `select fklivro, nome, autor, genero, urlCapa from livro lv 
-                        left join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario}
+                        inner join lido ld on lv.id=ld.fklivro where fkusuario = ${idUsuario}
                         order by datahora DESC;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -96,5 +106,6 @@ module.exports = {
     mostrarquantidadelivros,
     mostrargeneros,
     mostraravaliacoes,
-    excluirAvaliacao
+    excluirAvaliacao,
+    buscarLivrosNaolidos
 };

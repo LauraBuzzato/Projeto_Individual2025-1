@@ -1062,12 +1062,19 @@ html {
 
 .fundobiblioteca .graficos-kpis{
     position: static;
-    margin-left: 60%;
+    margin-left: 50%;
     flex-direction: row;
-    margin-top: -8.2%;
+    margin-top: -11%;
     font-size: 1rem;
-    width: 40%;
+    width: 50%;
     height: 24rem;
+}
+
+.fundobiblioteca .graficos-kpis canvas{
+
+    align-self: center;
+    justify-self: center;
+    margin-top: -2%;
 }
 
 .fundobiblioteca .aAvaliacoes{
@@ -1075,6 +1082,7 @@ html {
     font-size: 1.1rem;
     margin-left: 1%;
     color: #7A6448;
+    width: 9%;
     
 }
 
@@ -1085,4 +1093,9 @@ html {
 
 .fundobiblioteca .qtdlivros{
     height: 15rem;
+    width: 50%;
+}
+
+.fundobiblioteca .espaco{
+    margin-top: 3%;
 }

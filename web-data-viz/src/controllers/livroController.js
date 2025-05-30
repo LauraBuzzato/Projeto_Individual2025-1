@@ -50,6 +50,19 @@ function buscarLivros(req, res) {
         });
 }
 
+function buscarLivrosNaolidos(req, res) {
+    var idUsuario = req.body.idUsuarioServer
+
+    livroModel.buscarLivrosNaolidos(idUsuario)
+        .then((resultado) => {
+            res.json(resultado);
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar livros:", erro);
+            res.status(500).json({ erro: erro.sqlMessage });
+        });
+}
+
 function inserirLido(req, res) {
     var idLivroLido = req.body.idLivroLidoServer;
     var idUsuario = req.body.idUsuarioServer;
@@ -240,5 +253,6 @@ module.exports = {
     mostrarquantidadelivros,
     mostrargeneros,
     mostraravaliacoes,
-    excluirAvaliacao
+    excluirAvaliacao,
+    buscarLivrosNaolidos
 }

@@ -68,6 +68,7 @@ function excluirLivro(idlivroVar) {
       if (resposta.ok) {
         
           mostrarLido()
+          criarOpcoesSelect()
 
       } else {
         console.error("Erro ao excluir livro.")

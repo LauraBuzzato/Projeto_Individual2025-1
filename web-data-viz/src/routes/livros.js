@@ -11,6 +11,10 @@ router.post("/buscarLivros", function (req, res) {
     livroController.buscarLivros(req, res);
 });
 
+router.post("/buscarLivrosNaolidos", function (req, res) {
+    livroController.buscarLivrosNaolidos(req, res);
+});
+
 router.post("/inserirLido", function (req, res) {
     livroController.inserirLido(req, res);
 });
