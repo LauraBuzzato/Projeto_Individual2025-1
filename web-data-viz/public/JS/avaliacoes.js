@@ -21,7 +21,7 @@ function verificarLimite() {
     }
 }
 
-var livros = {}
+var livros = []
 
 var idUsuario = sessionStorage.ID_USUARIO
 
@@ -37,7 +37,7 @@ fetch("/livros/mostrarLido", {
     .then(res => res.json())
     .then(dados => {
         dados.forEach(livro => {
-            livros[livro.id] = livro
+            livros.push(livro)
             const opt = new Option(livro.nome, livro.fklivro)
             $('#nomelivro').append(opt)
         })

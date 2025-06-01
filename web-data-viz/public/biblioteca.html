@@ -141,13 +141,13 @@
 
 <script>
 
-    
+
 
     function criarOpcoesSelect() {
         const select = $("#listalidos")
         select.find('option').slice(1).remove()
-        
-        var livros = {}
+
+        var livros = []
 
         var idUsuarioVar = sessionStorage.ID_USUARIO
 
@@ -163,7 +163,7 @@
             .then(res => res.json())
             .then(dados => {
                 dados.forEach(livro => {
-                    livros[livro.id] = livro
+                    livros.push(livro)
                     const opt = new Option(livro.nome, livro.id)
                     $('#listalidos').append(opt)
                 })
@@ -195,7 +195,7 @@
                 if (resposta.ok) {
                     criarOpcoesSelect()
                     mostrarLido()
-                    
+
 
 
                 } else {
