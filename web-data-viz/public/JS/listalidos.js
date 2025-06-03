@@ -124,6 +124,8 @@ var generos = []
 var quantidades = []
 
 function mostrargeneros() {
+    var generos = []
+    var quantidades = []
     var idUsuarioVar = sessionStorage.ID_USUARIO
 
     fetch("/livros/mostrargeneros", {
